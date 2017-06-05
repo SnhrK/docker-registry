@@ -44,7 +44,7 @@ RUN chmod 755 /run.sh
 COPY conf/config /config
 
 # Run some Debian packages installation.
-ENV PACKAGES="php-pear curl php-xdebug"
+ENV PACKAGES="php-pear curl php-xdebug phpunit"
 RUN apt-get update && \
     apt-get install -yq --no-install-recommends $PACKAGES && \
     apt-get clean && \
