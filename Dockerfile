@@ -51,7 +51,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 RUN curl -sS https://getcomposer.org/installer | php
-RUN sudo mv composer.phar /usr/local/bin/composer
+RUN mv composer.phar /usr/local/bin/composer
 RUN composer require --dev phpunit/phpunit ^6.1
 
     
