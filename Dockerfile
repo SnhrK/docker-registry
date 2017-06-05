@@ -52,8 +52,7 @@ RUN apt-get update && \
 
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
-RUN touch /usr/local/bin/composer/composer.json
-RUN sed -e "{"require-dev": {"phpunit/phpunit": "3.7.*"}}" /usr/local/bin/composer/composer.json
+COPY conf/composer.json /usr/local/bin/composer/composer.json
 RUN composer install
 
     
