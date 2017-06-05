@@ -44,11 +44,16 @@ RUN chmod 755 /run.sh
 COPY conf/config /config
 
 # Run some Debian packages installation.
-ENV PACKAGES="php-pear curl php-xdebug phpunit"
+ENV PACKAGES="php-pear curl php-xdebug"
 RUN apt-get update && \
     apt-get install -yq --no-install-recommends $PACKAGES && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+RUN curl -sS https://getcomposer.org/installer | php
+RUN sudo mv composer.phar /usr/local/bin/composer
+RUN composer require --dev phpunit/phpunit ^6.1
+
     
 EXPOSE 80
 CMD ["/run.sh"]
