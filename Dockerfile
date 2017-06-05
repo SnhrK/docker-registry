@@ -52,8 +52,8 @@ RUN apt-get update && \
 
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
-#COPY conf/composer.json /usr/local/bin/composer/composer.json
-#RUN composer install
+COPY conf/composer.json /usr/local/bin/composer.json
+RUN composer install
 
     
 EXPOSE 80
