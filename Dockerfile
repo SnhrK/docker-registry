@@ -49,13 +49,6 @@ RUN apt-get update && \
     apt-get install -yq --no-install-recommends $PACKAGES && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-
-RUN curl -sS https://getcomposer.org/installer | php
-RUN mv composer.phar /usr/local/bin/composer
-COPY conf/composer.json /usr/local/bin/composer.json
-RUN cd /usr/local/bin
-RUN composer install
-
     
 EXPOSE 80
 CMD ["/run.sh"]
